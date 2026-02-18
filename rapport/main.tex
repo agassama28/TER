@@ -1,0 +1,55 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{amsthm}
+\usepackage{comment}
+\usepackage{float}
+\geometry{margin=2.5cm}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{prop}{Proposition}
+
+\newtheorem{lem}{Lemme}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prb}{\mathbb{P}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\sumin}{\sum_{i=1}^n}
+\newcommand{\limN}{\xrightarrow[n \to \infty]{}}
+
+\title{Random Graphs}
+\author{Abdoulaye GASSAMA \\ Sen ZHOU}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\begin{abstract}
+
+\end{abstract}
+
+\begin{dfn}
+A graph \(G = (V,E)\) is a collection of elements called vertices connected by edges. The set of vertices is denoted by \(V\) (from “vertices”), and the set of edges is denoted by \(E\) (from “edges”), where \(E \subset V \times V\). We denoted the set of graphs \(\mathcal{G}\).
+\end{dfn}
+
+\begin{dfn}
+Let \(n \in \mathbb{N} \) and \(p \in [0,1]\). A random graph \( G \in \mathcal{G}(n,p)\) is defined as \( G = (V,E)\) where:
+\(V = \{1,...,n\}\).\( \{i,j \} \in \binom{n}{2}\),that is, \(\Prb(\{i,j\} \in E)=p\).
+\end{dfn}
+
+\end{document}
