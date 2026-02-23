@@ -49,7 +49,49 @@ A graph \(G = (V,E)\) is a collection of elements called vertices connected by e
 
 \begin{dfn}
 Let \(n \in \mathbb{N} \) and \(p \in [0,1]\). A random graph \( G \in \mathcal{G}(n,p)\) is defined as \( G = (V,E)\) where:
-\(V = \{1,...,n\}\).\( \{i,j \} \in \binom{n}{2}\),that is, \(\Prb(\{i,j\} \in E)=p\).
+\(V = \{1,...,n\}\).\( \{i,j \} \in \binom{V}{2}\), \(\Prb(\{i,j\} \in E)=p\).
 \end{dfn}
 
+\section{Simulation of Graph \(\mathcal{G}(n,p)\)}
+In this section the objective is to simulate a random graph carried out by Python.For this we will need of the library networkx which give access to some useful functions.
+\begin{enumerate}
+\item Initialisation of parameters
+\begin{verbatim}
+n = 10 # number of vertices
+p = 0.5
+nb_graph = 10**4
+graph_list = []
+\end{verbatim}
+
+\item Function which generates an oriented random graph (i < j)
+\begin{verbatim}
+def generate_oriented_graph(n, p):
+    G = nx.DiGraph()
+    G.add_nodes_from(range(1, n+1)) 
+
+    for i in range(1, n+1):
+        for j in range(i+1, n+1):  # i < j
+            if np.random.rand() < p:
+                G.add_edge(i, j)
+    
+    return G
+\end{verbatim}    
+
+\newpage
+
+\item Loop which generates a list of graph
+\begin{verbatim}
+for i in range(nb_graph):
+    G = generate_oriented_graph(n, p)
+    graph_list.append(G)
+\end{verbatim}
+
+\item Computation of \( \frac{\#\{\text{graphs where } 1 \to n\}}{\#\{\text{simulations}\}}\)
+\begin{verbatim}    
+graph_1_n = 0
+for i in range(nb_graph):
+    if (nx.has_path(graph_list[i], 1, n)):
+        graph_1_n += 1 
+\end{verbatim}
+\end{enumerate}        
 \end{document}
